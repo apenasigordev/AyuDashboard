@@ -10,6 +10,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function App() {
   const { data, error } = useSWR("/api/users/v1/@me", fetcher)
+  const { type, isDark } = useTheme();
   
   return (
     <Layout>
@@ -20,7 +21,7 @@ export default function App() {
               w: "12%",
             },
           }}>
-          <Image src=""/>
+          {!isDark?<Image src="/ayu.png" height="40px" width="40px" style={{ filter: "grayscale(1)" }}/>:<Image src="/ayu.png" height="40px" width="40px" style={{ filter: "grayscale(1) invert(1)" }}/>}
           <Text b color="inherit" hideIn="xs">
             AYU
           </Text>
